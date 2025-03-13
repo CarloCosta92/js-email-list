@@ -7,13 +7,19 @@
 
 const endpoint = "https://flynn.boolean.careers/exercises/api/random/mail";
 
+//array per salvare le mail
+
+let emailSalvate = [];
 // funzione per generare 10 chiamate all api
 
 function generaEmail (){
 
+    // devo salvare i risultati in un array
+
     for (let i = 0; i < 10; i++) {
         axios.get(endpoint)
         .then(response => { 
+            emailSalvate.push(response.data.response);
         console.log(response.data.response);
         })
         .catch(error => {
@@ -22,5 +28,7 @@ function generaEmail (){
     }
 };
 
+console.log(emailSalvate)
+generaEmail ();
 
 
