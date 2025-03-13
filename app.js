@@ -16,6 +16,9 @@ let emailSalvate = [];
 
 function generaEmail() {
 
+    emailSalvate = [];                          // svuoto array e lista per utilizzo del bottone
+    listContainer.innerHTML = "";
+
     // ciclo for per fare 10 chiamate
 
     for (let i = 0; i < 10; i++) {
@@ -50,6 +53,18 @@ function generaEmail() {
 // console.log(emailSalvate)
 
 generaEmail();
+
+
+
+// generare nuove mail col bottone
+const bottone = document.getElementById("bottone");
+
+bottone.addEventListener("click", function () {
+
+    
+    generaEmail();
+}
+);
 
 
 
