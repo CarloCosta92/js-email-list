@@ -14,39 +14,42 @@ const listContainer = document.getElementById("list-container");
 let emailSalvate = [];
 // funzione per chiamare api
 
-function generaEmail (){
+function generaEmail() {
 
-        // ciclo for per fare 10 chiamate
+    // ciclo for per fare 10 chiamate
 
     for (let i = 0; i < 10; i++) {
         axios.get(endpoint)
-        .then(response => { 
-            emailSalvate.push(response.data.response);
+            .then(response => {
+                emailSalvate.push(response.data.response);
 
 
-        // console.log(response.data.response);
+                // console.log(response.data.response);
 
-            // qui ci metto la lista
+                // qui ci metto la lista
 
-            let item = "";
+                let item = "";
 
-            for (let i = 0; i < emailSalvate.length; i++) {
-                item += `<li class="list-group-item">${emailSalvate[i]}</li>`;
-            }
+                for (let i = 0; i < emailSalvate.length; i++) {
+                    item += `<li class="list-group-item">${emailSalvate[i]}</li>`;
+                }
 
-            listContainer.innerHTML = item;
+                listContainer.innerHTML = item;
 
 
-        })
-        .catch(error => {
-            console.log(error);
-        });
+            })
+            .catch(error => {
+                console.log(error);
+                listContainer.innerHTML = `<div class="alert alert-danger">
+            Hai sbagliato qualcosa!!
+          </div>`;
+            });
     }
 };
 
 // console.log(emailSalvate)
 
-generaEmail ();
+generaEmail();
 
 
 
